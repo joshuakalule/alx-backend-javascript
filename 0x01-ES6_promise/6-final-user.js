@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
         const { status, reason } = promise;
         let { value } = promise;
         if (value === undefined) {
-          value = reason;
+          value = String(reason);
         }
         outlist.push({
           status,
