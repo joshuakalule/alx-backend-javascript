@@ -3,15 +3,12 @@ export default function cleanSet(set, startString) {
     return '';
   }
 
-  return [...set].reduce((final, word, idx) => {
-    let result = final;
-    if (word.startsWith(startString)) {
-      result = word.substring(3);
-      if (idx !== 0) {
-        result = `-${result}`;
-      }
-      result = `${final}${result}`;
+  let result = '';
+  for (const value of set) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      result += `${value.slice(startString.length)}-`;
     }
-    return result;
-  }, '');
+  }
+
+  return result.slice(0, -1);
 }
