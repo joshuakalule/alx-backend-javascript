@@ -42,18 +42,17 @@ const app = http.createServer(async (req, res) => {
   const { url } = req;
 
   if (url === '/') {
-    res.write('Hello Holberton School!\n');
+    res.write('Hello Holberton School!');
   } else if (url === '/students') {
+    res.write('This is the list of our students\n');
     try {
       const studentData = await countStudents(filepath);
-      res.write('This is the list of our students\n');
-      res.write(studentData);
+      res.end(studentData);
     } catch (err) {
-      res.write('Internal Server Error\n');
+      res.end(err.message);
       res.statusCode = 500;
     }
   }
-  res.end();
 });
 
 app.listen(1245, () => {
