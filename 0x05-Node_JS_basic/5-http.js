@@ -1,6 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-const { doesNotMatch } = require('assert');
 
 const filepath = process.argv.length > 2 ? process.argv[2] : 'nope.csv';
 
