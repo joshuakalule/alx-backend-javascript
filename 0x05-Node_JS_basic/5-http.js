@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const { doesNotMatch } = require('assert');
 
 const filepath = process.argv.length > 2 ? process.argv[2] : 'nope.csv';
 
@@ -43,6 +44,7 @@ const app = http.createServer(async (req, res) => {
 
   if (url === '/') {
     res.write('Hello Holberton School!');
+    res.end();
   } else if (url === '/students') {
     res.write('This is the list of our students\n');
     try {
