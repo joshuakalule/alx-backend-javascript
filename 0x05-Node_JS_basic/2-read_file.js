@@ -26,13 +26,13 @@ function countStudents(filepath) {
     }
   }
 
-  process.stdout.write(`Number of students: ${n}\n`);
+  console.log(`Number of students: ${n}`);
 
   for (const [field, names] of Object.entries(fields)) {
     const len = names.length;
     const list = names.join(', ');
-    const string = `Number of students in ${field}: ${len}. List: ${list}\n`;
-    process.stdout.write(string);
+    const string = `Number of students in ${field}: ${len}. List: ${list}`;
+    console.log(string);
   }
 }
 
