@@ -8,8 +8,6 @@ const readDatabase = (filepath) => new Promise((resolve, reject) => {
     if (data) {
       const lines = data.trim().split('\n').map((line) => line.replace('\r', ''));
 
-      const n = lines.length - 1;
-
       const fields = {};
       for (let i = 1; i < lines.length; i += 1) {
         const firstname = lines[i].split(',')[0];
