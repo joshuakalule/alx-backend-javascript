@@ -1,0 +1,30 @@
+{
+  "name": "unittests_in_js",
+  "version": "1.0.0",
+  "description": "Test using mocha, chai, and sinon",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint",
+    "check-lint": "npm run lint [0-9]*.js",
+    "test": "node ./node_modules/mocha/bin/mocha --require babel-register --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshuakalule/alx-backend-javascript.git/0x06-unittests_in_js"
+  },
+  "author": "Joshua Kalule",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^0.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^28.8.3",
+    "mocha": "^10.7.3",
+    "nodemon": "^2.0.2",
+    "request": "^2.88.0",
+    "sinon": "^7.5.0"
+  },
+  "type": "module"
+}
