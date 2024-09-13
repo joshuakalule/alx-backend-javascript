@@ -1,57 +1,36 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('API index page', function() {
-  const URL = 'http://localhost:7865';
 
-  it('tests GET /', function (done) {
-    request.get(`${URL}/`, (err, res, body) => {
-      if (err) {
-        done(new Error('error in request'));
-      }
+describe('API integration test', () => {
+  const API_URL = 'http://localhost:7865';
+
+  it('GET / returns correct response', (done) => {
+    request.get(`${API_URL}/`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
       expect(body).to.be.equal('Welcome to the payment system');
       done();
     });
   });
 
-  it('tests GET /cart/23', function (done) {
-    request.get(`${URL}/cart/23`, (err, res, body) => {
-      if (err) {
-        done(new Error('error in request'));
-      }
+  it('GET /cart/:id returns correct response for valid :id', (done) => {
+    request.get(`${API_URL}/cart/47`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
-      expect(body).to.be.equal(`Payment methods for cart 23`);
+      expect(body).to.be.equal('Payment methods for cart 47');
       done();
     });
   });
 
-  it('tests GET /cart/NaN', function (done) {
-    request.get(`${URL}/cart/NaN`, (err, res, body) => {
-      if (err) {
-        done(new Error('error in request'));
-      }
-      expect(res.statusCode).to.not.be.equal(200);
+  it('GET /cart/:id returns 404 response for negative number values in :id', (done) => {
+    request.get(`${API_URL}/cart/-47`, (_err, res, _body) => {
+      expect(res.statusCode).to.be.equal(404);
       done();
     });
   });
 
-  it('tests GET /cart/892-567-334', function (done) {
-    request.get(`${URL}/cart/892-567-334`, (err, res, body) => {
-      if (err) {
-        done(new Error('error in request'));
-      }
-      expect(res.statusCode).to.not.be.equal(200);
-      done();
-    });
-  });
-
-  it('tests GET /cart/starrynight', function (done) {
-    request.get(`${URL}/cart/starrynight`, (err, res, body) => {
-      if (err) {
-        done(new Error('error in request'));
-      }
-      expect(res.statusCode).to.not.be.equal(200);
+  it('GET /cart/:id returns 404 response for non-numeric values in :id', (done) => {
+    request.get(`${API_URL}/cart/d200-44a5-9de6`, (_err, res, _body) => {
+      expect(res.statusCode).to.be.equal(404);
       done();
     });
   });
