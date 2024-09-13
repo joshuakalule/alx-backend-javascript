@@ -3,8 +3,9 @@ const { expect } = require('chai');
 
 describe('getPaymentTokenFromAPI', function () {
   it('should return a resolved promise with the correct data when success is true', function (done) {
-    getPaymentTokenFromAPI(false)
-      .then(response => {
+    const promise = getPaymentTokenFromAPI(true);
+
+    promise.then(response => {
         expect(response).to.deep.equal({ data: 'Successful response from the API' });
         done();
       })
