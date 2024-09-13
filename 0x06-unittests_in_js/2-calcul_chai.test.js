@@ -1,6 +1,5 @@
 import calculateNumber from './2-calcul_chai.js';
-import chai from 'chai';
-const { expect } = chai;
+import { expect } from 'chai';
 
 describe('tests the method calculateNumber', function () {
   describe('test when type is SUM', function () {
