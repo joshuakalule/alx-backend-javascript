@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 
 describe('tests the method calculateNumber', function () {
-  describe('test when type is SUM', function () {
+  describe('type == "SUM"', function () {
     it('tests a rounded', function () {
       const test1 = calculateNumber('SUM', 2.2, 3);
       expect(test1).to.be.equal(5);
