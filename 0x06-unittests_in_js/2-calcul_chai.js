@@ -13,4 +13,4 @@ const calculateNumber = (type, a, b) => {
   return 'Error';
 };
 
-export default calculateNumber;
+module.exports = calculateNumber;
